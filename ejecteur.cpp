@@ -8,11 +8,18 @@ Ejecteur::Ejecteur(int _numEjecteur, ModBusTCP &_modBusTCP, QObject *parent) :QO
 
 Ejecteur::~Ejecteur()
 {
+    delete timerEjecteur;
+}
 
+void Ejecteur::piloter()
+{
+    modBusTCP.WriteSingleCoils( numEjecteur, ON );
+    timerEjecteur->start(1000);
 }
 
 void Ejecteur::on_finTimerEjecteur()
 {
-
+    timerEjecteur->stop();
+    modBusTCP.WriteSingleCoils( numEjecteur, OFF );
 }
 

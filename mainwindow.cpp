@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     for(int x=0;x<QSerialPortInfo::availablePorts().length();x++)
         ui->comboBox_portLecteur->addItem(QSerialPortInfo::availablePorts()[x].portName());
 
-    laPO=NULL;
+    laPO = NULL;
 }
 
 
@@ -38,7 +38,5 @@ void MainWindow::connecterPO()
     if(laPO==NULL)
         laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
     else
-        QMessageBox::critical(this,"Erreur connexion","Déja connecté");
-
+        QMessageBox::critical(this,"Erreur connexion","Déjà connecté");
 }
-

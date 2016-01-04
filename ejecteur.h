@@ -10,7 +10,7 @@ class Ejecteur : public QObject
 public:
     Ejecteur(int _numEjecteur, ModBusTCP &_modBusTCP, QObject *parent = 0);
     ~Ejecteur();
-    void piloter(bool _sens);
+    void piloter();
 
 public slots:
     void on_finTimerEjecteur();

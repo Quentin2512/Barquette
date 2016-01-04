@@ -19,6 +19,7 @@ public slots:
 
 signals:
     void signalBarquetteEjectee();
+    void signalEjecteurTrouve();
 
 private:
     qint8 capteurs;
