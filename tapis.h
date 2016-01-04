@@ -2,16 +2,23 @@
 #define TAPIS_H
 
 #include <QObject>
+#include <modbustcp.h>
+
+enum{
+    OFF,
+    ON = 0xFF
+};
 
 class Tapis:public QObject
 {
     Q_OBJECT
 public:
-    Tapis(quint16 _adresseTapis, QObject *parent=0);
+    Tapis(quint16 _adresseTapis, ModBusTCP *_modBusTCP, QObject *parent=0);
     void commander(bool _marche);
 
 private:
     quint16 adresseTapis;
+    ModBusTCP *modBusTCP;
 };
 
 #endif // TAPIS_H

@@ -7,7 +7,7 @@ PartieOperative::PartieOperative(QHostAddress _adresseIp, quint16 _port, quint8 
     connect(timerPO,SIGNAL(timeout()),this,SLOT(on_finTimer()));
     capteurActuel=-1;
     octet=0;
-    leTapis=new Tapis((quint16)TAPIS);
+    leTapis=new Tapis((quint16)TAPIS, modbusTCP);
 }
 
 PartieOperative::~PartieOperative()
