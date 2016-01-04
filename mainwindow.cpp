@@ -70,8 +70,3 @@ void MainWindow::connecterPO()
         laPO=NULL;
     }
 }
-
-void MainWindow::on_pushButton_ejecteur_clicked()
-{
-    laPO->ejecterBarquette( ui->spinBox_portTCP->text().toInt() );
-}

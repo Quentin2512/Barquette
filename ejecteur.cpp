@@ -13,13 +13,13 @@ Ejecteur::~Ejecteur()
 
 void Ejecteur::piloter()
 {
-    modBusTCP.WriteSingleCoils( numEjecteur, ON );
-    timerEjecteur->start(1000);
+    modBusTCP.WriteSingleCoils(numEjecteur, ON);
+    timerEjecteur->start(500);
 }
 
 void Ejecteur::on_finTimerEjecteur()
 {
     timerEjecteur->stop();
-    modBusTCP.WriteSingleCoils( numEjecteur, OFF );
+    modBusTCP.WriteSingleCoils(numEjecteur, OFF);
 }
 

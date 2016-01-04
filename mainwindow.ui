@@ -452,62 +452,6 @@
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="groupBox_ejecteur">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>150</y>
-      <width>151</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Test Ejecteur</string>
-    </property>
-    <widget class="QComboBox" name="comboBox_ejecteur">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>31</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <item>
-      <property name="text">
-       <string>1</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>2</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>3</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>4</string>
-      </property>
-     </item>
-    </widget>
-    <widget class="QPushButton" name="pushButton_ejecteur">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>20</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Ejecteur</string>
-     </property>
-    </widget>
-   </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

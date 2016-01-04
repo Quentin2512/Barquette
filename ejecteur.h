@@ -2,7 +2,8 @@
 #define EJECTEUR_H
 
 #include <QObject>
-#include "partieoperative.h"
+#include <QTimer>
+#include "modbustcp.h"
 
 class Ejecteur : public QObject
 {

@@ -5,6 +5,7 @@
 #include <QTimer>
 #include "modbustcp.h"
 #include "tapis.h"
+#include "ejecteur.h"
 
 #define NB_CAPTEURS 4
 
@@ -43,6 +44,7 @@ private:
     int capteurActuel;
     qint8 octet;
     bool capteurs[NB_CAPTEURS];
+    Ejecteur *lesEjecteurs[NB_CAPTEURS];
 };
 
 #endif // PARTIEOPERATIVE_H

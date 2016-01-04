@@ -7,6 +7,9 @@
 #include <QDataStream>
 #include <QSemaphore>
 
+#define OFF 0x00
+#define ON 0xFF
+
 enum CODE_FONCTION
 {
     FC_READ_COILS=1,

@@ -4,6 +4,10 @@ PartieOperative::PartieOperative(QHostAddress _adresseIp, quint16 _port, quint8 
 {
     modBusTCP=new ModBusTCP(_adresseIp,_port,_esclaveId);
     connect(modBusTCP,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState)));
+
+    for(int x=0;x<NB_CAPTEURS;x++)
+        lesEjecteurs[x]=new Ejecteur(x,*modBusTCP);
+
     timerPO=new QTimer;
     connect(timerPO,SIGNAL(timeout()),this,SLOT(on_finTimer()));
     capteurActuel=-1;
@@ -13,6 +17,8 @@ PartieOperative::PartieOperative(QHostAddress _adresseIp, quint16 _port, quint8 
 
 PartieOperative::~PartieOperative()
 {
+    for(int x=0;x<NB_CAPTEURS;x++)
+        delete lesEjecteurs[x];
     delete timerPO;
     delete modBusTCP;
     delete leTapis;
@@ -20,7 +26,7 @@ PartieOperative::~PartieOperative()
 
 void PartieOperative::ejecterBarquette(int numCapteur)
 {
-    modBusTCP->WriteSingleCoils(numCapteur,true);
+    lesEjecteurs[numCapteur]->piloter();
 }
 
 /*void PartieOperative::verifCapteurs()
