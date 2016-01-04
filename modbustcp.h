@@ -5,6 +5,7 @@
 #include <QHostAddress>
 #include <QTcpSocket>
 #include <QDataStream>
+#include <QSemaphore>
 
 enum CODE_FONCTION
 {
@@ -51,6 +52,7 @@ private:
     quint16 port;
     quint8 esclaveId;
     static quint16 transactionId;
+    QSemaphore exclusion;
 };
 
 #endif // MODBUSTCP_H
