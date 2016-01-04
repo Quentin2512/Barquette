@@ -35,8 +35,14 @@ void MainWindow::lancerProduction()
 
 void MainWindow::connecterPO()
 {
-    if(laPO==NULL)
-        laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
+    if( ui->pushButton_connexion->text() == "Connexion" )
+    {
+        ui->pushButton_connexion->setText("Déconnexion");
+        if(laPO==NULL)
+            laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
+        else
+            QMessageBox::critical(this,"Erreur connexion","Déjà connecté");
+    }
     else
-        QMessageBox::critical(this,"Erreur connexion","Déjà connecté");
+        ui->pushButton_connexion->setText("Connexion");
 }
