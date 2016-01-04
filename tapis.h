@@ -4,6 +4,9 @@
 #include <QObject>
 #include <modbustcp.h>
 
+#define OFF 0x00
+#define ON 0xFF
+
 class Tapis:public QObject
 {
     Q_OBJECT

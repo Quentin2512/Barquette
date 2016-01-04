@@ -8,7 +8,7 @@ Tapis::Tapis(quint16 _adresseTapis, ModBusTCP &_modBusTCP, QObject *parent):QObj
 void Tapis::commander(bool _marche)
 {
     if (_marche)
-        modBusTCP.WriteSingleCoils( adresseTapis, 0xFF );
+        modBusTCP.WriteSingleCoils( adresseTapis, ON );
     else
-        modBusTCP.WriteSingleCoils( adresseTapis, 0x00 );
+        modBusTCP.WriteSingleCoils( adresseTapis, OFF );
 }

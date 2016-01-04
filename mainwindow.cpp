@@ -21,7 +21,15 @@ MainWindow::~MainWindow()
 
 void MainWindow::lancerProduction()
 {
-    laPO->lancerProduction();
+    if( ui->pushButton_lancerProd->text() == "Lancer la production" ){
+        ui->pushButton_lancerProd->setText("Arrêter la production");
+        laPO->lancerProduction();
+    }
+    else{
+        ui->pushButton_lancerProd->setText("Lancer la production");
+        laPO->arreterProduction();
+    }
+
 }
 
 void MainWindow::connecterPO()
