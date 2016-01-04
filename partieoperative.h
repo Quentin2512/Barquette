@@ -36,16 +36,14 @@ private slots:
     void on_finTimerPO();
 
     void on_socketChanged(QAbstractSocket::SocketState socketEtat);
+
 private:
     ModBusTCP *modBusTCP;
     QTimer *timerPO;
-    std::string etatCapteurs;
     Tapis *leTapis;
-    int capteurActuel;
-    qint8 octet;
-    bool capteurs[NB_CAPTEURS];
     Ejecteur *lesEjecteurs[NB_CAPTEURS];
     Capteurs *lesCapteurs;
+    quint8 etatCapteurs;
 };
 
 #endif // PARTIEOPERATIVE_H
