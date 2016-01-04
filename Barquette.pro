@@ -18,13 +18,15 @@ SOURCES += main.cpp\
     modbustcp.cpp \
     tapis.cpp \
     partieoperative.cpp \
-    capteurs.cpp
+    capteurs.cpp \
+    ejecteur.cpp
 
 HEADERS  += mainwindow.h \
     barquette.h \
     modbustcp.h \
     tapis.h \
     partieoperative.h \
-    capteurs.h
+    capteurs.h \
+    ejecteur.h
 
 FORMS    += mainwindow.ui
