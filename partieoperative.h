@@ -8,6 +8,14 @@
 
 #define NB_CAPTEURS 4
 
+enum{
+    CAPTEUR1=1,
+    CAPTEUR2,
+    CAPTEUR3,
+    CAPTEUR4,
+    TAPIS
+};
+
 class PartieOperative: public QObject
 {
     Q_OBJECT

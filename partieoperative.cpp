@@ -7,7 +7,7 @@ PartieOperative::PartieOperative(const int idEsclave, QObject *parent):QObject(p
     connect(timerPO,SIGNAL(timeout()),this,SLOT(on_finTimer()));
     capteurActuel=-1;
     octet=0;
-    timerPO->start(250);
+    leTapis=new Tapis((quint16)TAPIS);
 }
 
 PartieOperative::~PartieOperative()
@@ -24,7 +24,8 @@ void PartieOperative::ejecterBarquette(int numCapteur)
 
 void PartieOperative::lancerProduction()
 {
-
+    leTapis->commander(true);
+    timerPO->start(250);
 }
 
 /*void PartieOperative::verifCapteurs()

@@ -19,7 +19,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::lancerProduction()
 {
-
+    laPO->lancerProduction();
 }
 
 void MainWindow::connecterPO()

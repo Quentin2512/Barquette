@@ -4,3 +4,8 @@ Tapis::Tapis(quint16 _adresseTapis, QObject *parent):QObject(parent),adresseTapi
 {
 
 }
+
+void Tapis::commander(bool _marche)
+{
+
+}
