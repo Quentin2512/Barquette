@@ -21,6 +21,9 @@ public:
     void lancerProduction();
     void connecterPO();
 
+private slots:
+    void on_pushButton_lancerProd_clicked();
+
 private:
     Ui::MainWindow *ui;
     PartieOperative *laPO;

@@ -26,3 +26,4 @@ void MainWindow::connecterPO()
 {
     laPO = new PartieOperative(ui->spinBox_idEsclave->value());
 }
+

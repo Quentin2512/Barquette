@@ -513,4 +513,7 @@ pour le lecteur de code</string>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
+ <slots>
+  <slot>lancerProduction()</slot>
+ </slots>
 </ui>
