@@ -31,6 +31,8 @@ private slots:
 
     void on_socketChanged(QAbstractSocket::SocketState state);
 
+    void on_pushButton_ejecteur_clicked();
+
 private:
     Ui::MainWindow *ui;
     PartieOperative *laPO;

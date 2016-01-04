@@ -107,7 +107,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Etat de la connexion</string>
+      <string>État de la connexion</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -133,7 +133,7 @@
       </rect>
      </property>
      <property name="title">
-      <string>Test Ejecteur</string>
+      <string>Test Éjecteur</string>
      </property>
      <widget class="QComboBox" name="comboBox_ejecteur">
       <property name="geometry">
@@ -175,7 +175,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Ejecteur</string>
+       <string>Éjecter</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_relacher">
@@ -188,7 +188,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Relacher</string>
+       <string>Relâcher</string>
       </property>
      </widget>
     </widget>
