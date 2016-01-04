@@ -15,13 +15,13 @@ ModBusTCP::~ModBusTCP()
     delete pSocket;
 }
 
-void ModBusTCP::WriteSingleCoils(bool donnee, int reference)
+void ModBusTCP::WriteSingleCoils(qint16 _adresse, quint8 _valeur)
 {
     QDataStream out(pSocket);
     debutTrame();
     out<<(quint8)FC_WRITE_COILS;
-    out<<(quint16)reference;
-    if(donnee)
+    out<<_adresse;
+    if((bool)_valeur)
     {
         out<<(quint8)0xFF;
         out<<(quint8)0;
@@ -30,12 +30,12 @@ void ModBusTCP::WriteSingleCoils(bool donnee, int reference)
     }
 }
 
-void ModBusTCP::ReadInputRegister(quint16 reference)
+void ModBusTCP::ReadInputRegister(quint16 adresse)
 {
     QDataStream out(pSocket);
     debutTrame();
     out<<(quint8)FC_READ_INPUT_REGISTERS;
-    out<<reference;
+    out<<adresse;
     out<<(quint16)1;
 }
 

@@ -26,8 +26,8 @@ class ModBusTCP : public QObject
 public:
     explicit ModBusTCP(QHostAddress _adresseIp, quint16 _port, quint8 _esclaveId, QObject *parent = 0);
     ~ModBusTCP();
-    void WriteSingleCoils(bool donnee, int reference);
-    void ReadInputRegister(quint16 reference);
+    void WriteSingleCoils(qint16 _adresse, quint8 _valeur);
+    void ReadInputRegister(quint16 adresse);
     void ConnecterEsclaveModBus(QString adresseIp, int port);
     void DeconnecterEsclaveModBus();
     void debutTrame();
