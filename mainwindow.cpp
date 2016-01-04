@@ -35,7 +35,20 @@ void MainWindow::lancerProduction()
 
 void MainWindow::on_socketChanged(QAbstractSocket::SocketState socketEtat)
 {
-    ui->listWidget_etatConnexion->addItem((QString)socketEtat);
+    switch (socketEtat) {
+    case QAbstractSocket::ConnectingState:
+        ui->listWidget_etatConnexion->addItem("Connexion en cours...");
+        break;
+    case QAbstractSocket::ConnectedState:
+        ui->listWidget_etatConnexion->addItem("Connecté");
+        ui->pushButton_connexion->setText("Déconnexion");
+        break;
+    case QAbstractSocket::UnconnectedState:
+        ui->listWidget_etatConnexion->addItem("Déconnecté");
+        break;
+    default:
+        break;
+    }
 }
 
 void MainWindow::connecterPO()
@@ -46,12 +59,15 @@ void MainWindow::connecterPO()
     }
     if( ui->pushButton_connexion->text() == "Connexion" )
     {
-        ui->pushButton_connexion->setText("Déconnexion");
+
         if(laPO==NULL)
             laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
         else
             QMessageBox::critical(this,"Erreur connexion","Déjà connecté");
-    }
-    else
+    }else{
+        laPO->arreterProduction();
         ui->pushButton_connexion->setText("Connexion");
+        delete laPO;
+        laPO=NULL;
+    }
 }
