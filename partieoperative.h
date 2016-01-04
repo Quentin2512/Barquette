@@ -20,7 +20,7 @@ class PartieOperative: public QObject
 {
     Q_OBJECT
 public:
-    PartieOperative(const int idEsclave, QObject *parent=0);
+    PartieOperative(QHostAddress _adresseIp, quint16 _port,quint8 _esclaveId, QObject *parent=0);
     ~PartieOperative();
     void ejecterBarquette(int numEjecteur);
     void demarrerTapis();

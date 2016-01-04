@@ -24,6 +24,6 @@ void MainWindow::lancerProduction()
 
 void MainWindow::connecterPO()
 {
-    laPO = new PartieOperative(ui->spinBox_idEsclave->value());
+    laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
 }
 

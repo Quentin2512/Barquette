@@ -2,8 +2,8 @@
 
 quint16 ModBusTCP::transactionId=0;
 
-ModBusTCP::ModBusTCP(int _idEsclave, QObject *parent) : QObject(parent),
-  idEsclave(_idEsclave)
+ModBusTCP::ModBusTCP(QHostAddress _adresseIp, quint16 _port, quint8 _esclaveId, QObject *parent) : QObject(parent),
+  adresseIp(_adresseIp),port(_port),esclaveId(_esclaveId)
 {
     pSocket = new QTcpSocket();
     connect(pSocket,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState)));
@@ -50,7 +50,7 @@ void ModBusTCP::debutTrame()
      out<<transactionId++;
      out<<(quint16)0;
      out<<(quint16)6;
-     out<<(quint8)idEsclave;
+     out<<(quint8)esclaveId;
 }
 
 void ModBusTCP::on_socketChanged(QAbstractSocket::SocketState socketEtat)

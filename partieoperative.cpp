@@ -1,8 +1,8 @@
 #include "PartieOperative.h"
 
-PartieOperative::PartieOperative(const int idEsclave, QObject *parent):QObject(parent)
+PartieOperative::PartieOperative(QHostAddress _adresseIp, quint16 _port, quint8 _esclaveId, QObject *parent):QObject(parent)
 {
-    modbusTCP=new ModBusTCP(idEsclave);
+    modbusTCP=new ModBusTCP(_adresseIp,_port,_esclaveId);
     timerPO=new QTimer;
     connect(timerPO,SIGNAL(timeout()),this,SLOT(on_finTimer()));
     capteurActuel=-1;

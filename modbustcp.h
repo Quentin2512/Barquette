@@ -23,7 +23,7 @@ class ModBusTCP : public QObject
 {
     Q_OBJECT
 public:
-    explicit ModBusTCP(const int _idEsclave,QObject *parent = 0);
+    explicit ModBusTCP(QHostAddress _adresseIp, quint16 _port, quint8 _esclaveId, QObject *parent = 0);
     ~ModBusTCP();
     void WriteSingleCoils(bool donnee, int reference);
     void ReadInputRegister(quint16 reference);
@@ -48,7 +48,8 @@ private slots:
 private:
     QTcpSocket *pSocket;
     QHostAddress adresseIp;
-    quint16 port,idEsclave;
+    quint16 port;
+    quint8 esclaveId;
     static quint16 transactionId;
 };
 
