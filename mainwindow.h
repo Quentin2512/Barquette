@@ -18,11 +18,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void lancerProduction();
     void connecterPO();
 
 private slots:
-    void on_pushButton_lancerProd_clicked();
+    void lancerProduction();
 
 private:
     Ui::MainWindow *ui;
