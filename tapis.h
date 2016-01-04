@@ -4,11 +4,6 @@
 #include <QObject>
 #include <modbustcp.h>
 
-enum{
-    OFF,
-    ON = 0xFF
-};
-
 class Tapis:public QObject
 {
     Q_OBJECT
