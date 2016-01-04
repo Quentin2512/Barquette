@@ -29,7 +29,7 @@ private slots:
 
     void lancerProduction();
 
-    void on_socketChanged(QAbstractSocket::SocketState socketEtat);
+    void on_socketChanged(QAbstractSocket::SocketState state);
 
 private:
     Ui::MainWindow *ui;

@@ -28,8 +28,6 @@ public:
     ~ModBusTCP();
     void WriteSingleCoils(qint16 _adresse, quint8 _valeur);
     void ReadInputRegister(quint16 adresse);
-    void ConnecterEsclaveModBus(QString adresseIp, int port);
-    void DeconnecterEsclaveModBus();
     void debutTrame();
 
 signals:

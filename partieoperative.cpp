@@ -63,5 +63,5 @@ void PartieOperative::on_finTimer()
 
 void PartieOperative::on_socketChanged(QAbstractSocket::SocketState socketEtat)
 {
-        emit stateChanged(socketEtat);
+    emit stateChanged(socketEtat);
 }

@@ -6,6 +6,7 @@ ModBusTCP::ModBusTCP(QHostAddress _adresseIp, quint16 _port, quint8 _esclaveId, 
   adresseIp(_adresseIp),port(_port),esclaveId(_esclaveId)
 {
     pSocket = new QTcpSocket(this);
+    pSocket->connectToHost(adresseIp,port);
     connect(pSocket,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState)));
     connect(pSocket,SIGNAL(readyRead()),this,SLOT(on_readyRead()));
 }
@@ -37,11 +38,6 @@ void ModBusTCP::ReadInputRegister(quint16 adresse)
     out<<(quint8)FC_READ_INPUT_REGISTERS;
     out<<adresse;
     out<<(quint16)1;
-}
-
-void ModBusTCP::DeconnecterEsclaveModBus()
-{
-    pSocket->disconnectFromHost();
 }
 
 void ModBusTCP::debutTrame()
@@ -103,9 +99,3 @@ void ModBusTCP::on_readyRead()
         break;
     }
 }
-
-void ModBusTCP::ConnecterEsclaveModBus(QString adresseIp, int port)
-{
-    pSocket->connectToHost(adresseIp, port);
-}
-
