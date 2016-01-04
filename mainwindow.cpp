@@ -26,6 +26,7 @@ void MainWindow::lancerProduction()
     if( ui->pushButton_lancerProd->text() == "Lancer la production" ){
         ui->pushButton_lancerProd->setText("Arrêter la production");
         laPO->lancerProduction();
+        connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),this,SLOT(on_etatCapteurChanged(qint8)));
     }else{
         ui->pushButton_lancerProd->setText("Lancer la production");
         laPO->arreterProduction();
@@ -50,6 +51,11 @@ void MainWindow::on_socketChanged(QAbstractSocket::SocketState state)
     default:
         break;
     }
+}
+
+void MainWindow::on_etatCapteurChanged(qint8 tram)
+{
+
 }
 
 void MainWindow::connecterPO()

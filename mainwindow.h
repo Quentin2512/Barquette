@@ -22,6 +22,7 @@ public:
 signals:
     void signalChangementEtatCapteurs(quint8);
     void stateChanged(QAbstractSocket::SocketState);
+    void etatCapteurChanged(qint8);
 
 private slots:
     void connecterPO();
@@ -29,6 +30,8 @@ private slots:
     void lancerProduction();
 
     void on_socketChanged(QAbstractSocket::SocketState state);
+
+    void on_etatCapteurChanged(qint8 tram);
 
 private:
     Ui::MainWindow *ui;
