@@ -55,7 +55,6 @@ void MainWindow::on_socketChanged(QAbstractSocket::SocketState state)
 
 void MainWindow::connecterPO()
 {
-
     if( ui->pushButton_connexion->text() == "Connexion" )
     {
         if(laPO==NULL){

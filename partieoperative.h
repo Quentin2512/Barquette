@@ -9,10 +9,11 @@
 #define NB_CAPTEURS 4
 
 enum{
-    CAPTEUR1=1,
-    CAPTEUR2,
-    CAPTEUR3,
-    CAPTEUR4,
+    CAPTEUR,
+    EJECTEUR1,
+    EJECTEUR2,
+    EJECTEUR3,
+    EJECTEUR4,
     TAPIS
 };
 
