@@ -127,9 +127,9 @@
      <property name="geometry">
       <rect>
        <x>309</x>
-       <y>69</y>
+       <y>99</y>
        <width>151</width>
-       <height>91</height>
+       <height>61</height>
       </rect>
      </property>
      <property name="title">
@@ -178,6 +178,7 @@
        <string>Éjecter</string>
       </property>
      </widget>
+<<<<<<< HEAD
      <widget class="QPushButton" name="pushButton_relacher">
       <property name="geometry">
        <rect>
@@ -191,6 +192,8 @@
        <string>Relâcher</string>
       </property>
      </widget>
+=======
+>>>>>>> origin/master
     </widget>
     <widget class="QLabel" name="label_idEsclave">
      <property name="geometry">
