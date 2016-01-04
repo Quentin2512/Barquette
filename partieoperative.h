@@ -28,10 +28,12 @@ public:
 
 signals:
     void signalChangementEtatCapteurs(quint8);
+    void stateChanged(QAbstractSocket::SocketState);
 
 private slots:
     void on_finTimer();
 
+    void on_socketChanged(QAbstractSocket::SocketState socketEtat);
 private:
     ModBusTCP *modBusTCP;
     QTimer *timerPO;

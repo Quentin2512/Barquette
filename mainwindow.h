@@ -20,10 +20,16 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+signals:
+    void signalChangementEtatCapteurs(quint8);
+    void stateChanged(QAbstractSocket::SocketState);
+
 private slots:
     void connecterPO();
 
     void lancerProduction();
+
+    void on_socketChanged(QAbstractSocket::SocketState socketEtat);
 
 private:
     Ui::MainWindow *ui;

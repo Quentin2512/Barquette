@@ -3,6 +3,7 @@
 PartieOperative::PartieOperative(QHostAddress _adresseIp, quint16 _port, quint8 _esclaveId, QObject *parent):QObject(parent)
 {
     modBusTCP=new ModBusTCP(_adresseIp,_port,_esclaveId);
+    connect(modBusTCP,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState)));
     timerPO=new QTimer;
     connect(timerPO,SIGNAL(timeout()),this,SLOT(on_finTimer()));
     capteurActuel=-1;
@@ -58,4 +59,9 @@ void PartieOperative::ejecterBarquette(int numCapteur)
 void PartieOperative::on_finTimer()
 {
 
+}
+
+void PartieOperative::on_socketChanged(QAbstractSocket::SocketState socketEtat)
+{
+        emit stateChanged(socketEtat);
 }

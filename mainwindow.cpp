@@ -33,8 +33,18 @@ void MainWindow::lancerProduction()
     }
 }
 
+void MainWindow::on_socketChanged(QAbstractSocket::SocketState socketEtat)
+{
+    ui->listWidget_etatConnexion->addItem((QString)socketEtat);
+}
+
 void MainWindow::connecterPO()
 {
+<<<<<<< HEAD
+    if(laPO==NULL){
+        laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
+        connect(laPO,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState)));
+=======
     if( ui->pushButton_connexion->text() == "Connexion" )
     {
         ui->pushButton_connexion->setText("Déconnexion");
@@ -42,6 +52,7 @@ void MainWindow::connecterPO()
             laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
         else
             QMessageBox::critical(this,"Erreur connexion","Déjà connecté");
+>>>>>>> origin/master
     }
     else
         ui->pushButton_connexion->setText("Connexion");
