@@ -2,25 +2,25 @@
 
 PartieOperative::PartieOperative(QHostAddress _adresseIp, quint16 _port, quint8 _esclaveId, QObject *parent):QObject(parent)
 {
-    modbusTCP=new ModBusTCP(_adresseIp,_port,_esclaveId);
+    modBusTCP=new ModBusTCP(_adresseIp,_port,_esclaveId);
     timerPO=new QTimer;
     connect(timerPO,SIGNAL(timeout()),this,SLOT(on_finTimer()));
     capteurActuel=-1;
     octet=0;
-    leTapis=new Tapis((quint16)TAPIS, *modbusTCP);
+    leTapis=new Tapis((quint16)TAPIS, *modBusTCP);
 }
 
 PartieOperative::~PartieOperative()
 {
     delete timerPO;
-    delete modbusTCP;
+    delete modBusTCP;
     delete leTapis;
 }
 
 void PartieOperative::ejecterBarquette(int numCapteur)
 {
     numCapteur=capteurActuel;
-    modbusTCP->WriteSingleCoils(true,numCapteur);
+    modBusTCP->WriteSingleCoils(true,numCapteur);
 }
 
 /*void PartieOperative::verifCapteurs()

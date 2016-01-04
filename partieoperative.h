@@ -33,7 +33,7 @@ private slots:
     void on_finTimer();
 
 private:
-    ModBusTCP *modbusTCP;
+    ModBusTCP *modBusTCP;
     QTimer *timerPO;
     std::string etatCapteurs;
     Tapis *leTapis;

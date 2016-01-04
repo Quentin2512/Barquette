@@ -16,9 +16,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    delete ui;
     if(laPO != NULL)
         delete laPO;
+    delete ui;
 }
 
 void MainWindow::lancerProduction()
@@ -31,7 +31,6 @@ void MainWindow::lancerProduction()
         ui->pushButton_lancerProd->setText("Lancer la production");
         laPO->arreterProduction();
     }
-
 }
 
 void MainWindow::connecterPO()
