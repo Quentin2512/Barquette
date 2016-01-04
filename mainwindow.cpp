@@ -17,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    if(laPO != NULL)
+        delete laPO;
 }
 
 void MainWindow::lancerProduction()

@@ -14,6 +14,7 @@ PartieOperative::~PartieOperative()
 {
     delete timerPO;
     delete modbusTCP;
+    delete leTapis;
 }
 
 void PartieOperative::ejecterBarquette(int numCapteur)
