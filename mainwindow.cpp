@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     for(int x=0;x<QSerialPortInfo::availablePorts().length();x++)
         ui->comboBox_portLecteur->addItem(QSerialPortInfo::availablePorts()[x].portName());
+
+    laPO=NULL;
 }
 
 
@@ -24,6 +26,7 @@ void MainWindow::lancerProduction()
 
 void MainWindow::connecterPO()
 {
-    laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
+    if(laPO==NULL)
+        laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
 }
 
