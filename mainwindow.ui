@@ -244,9 +244,6 @@ pour le lecteur de code</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_lancerProd">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
     <property name="geometry">
      <rect>
       <x>510</x>

@@ -42,11 +42,9 @@ void MainWindow::on_socketChanged(QAbstractSocket::SocketState state)
     case QAbstractSocket::ConnectedState:
         ui->listWidget_etatConnexion->addItem("Connecté");
         ui->pushButton_connexion->setText("Déconnexion");
-        ui->pushButton_lancerProd->setEnabled(true);
         break;
     case QAbstractSocket::UnconnectedState:
         ui->listWidget_etatConnexion->addItem("Déconnecté");
-        ui->pushButton_lancerProd->setEnabled(false);
         break;
     default:
         break;
@@ -62,9 +60,6 @@ void MainWindow::connecterPO()
             connect(laPO,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState)));
         }
     }else{
-        if(ui->pushButton_lancerProd->text()=="Arrêter la production"){
-            lancerProduction();
-        }
         laPO->arreterProduction();
         ui->pushButton_connexion->setText("Connexion");
         delete laPO;
