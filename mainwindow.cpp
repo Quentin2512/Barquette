@@ -53,15 +53,13 @@ void MainWindow::on_socketChanged(QAbstractSocket::SocketState socketEtat)
 
 void MainWindow::connecterPO()
 {
-    if(laPO==NULL){
-        laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
-        connect(laPO,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState)));
-    }
+
     if( ui->pushButton_connexion->text() == "Connexion" )
     {
-
-        if(laPO==NULL)
+        if(laPO==NULL){
             laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
+            connect(laPO,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState)));
+        }
         else
             QMessageBox::critical(this,"Erreur connexion","Déjà connecté");
     }else{
