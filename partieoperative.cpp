@@ -20,7 +20,6 @@ PartieOperative::~PartieOperative()
 
 void PartieOperative::ejecterBarquette(int numCapteur)
 {
-    numCapteur=capteurActuel;
     modBusTCP->WriteSingleCoils(numCapteur,true);
 }
 
