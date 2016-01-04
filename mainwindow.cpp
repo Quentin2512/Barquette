@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     for(int x=0;x<QSerialPortInfo::availablePorts().length();x++)
-        ui->comboBox_portLecteur->addItem(QSerialPortInfo::availablePorts()[x].portName());
+        ui->comboBox_portLecteur->addItem(QSerialPortInfo::availablePorts()[x].description()+" - "+QSerialPortInfo::availablePorts()[x].portName());
 
     laPO = NULL;
 }
@@ -26,8 +26,7 @@ void MainWindow::lancerProduction()
     if( ui->pushButton_lancerProd->text() == "Lancer la production" ){
         ui->pushButton_lancerProd->setText("Arrêter la production");
         laPO->lancerProduction();
-    }
-    else{
+    }else{
         ui->pushButton_lancerProd->setText("Lancer la production");
         laPO->arreterProduction();
     }

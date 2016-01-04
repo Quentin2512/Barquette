@@ -19,7 +19,7 @@
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>471</width>
+      <width>321</width>
       <height>181</height>
      </rect>
     </property>
@@ -123,62 +123,6 @@
       </rect>
      </property>
     </widget>
-    <widget class="QGroupBox" name="groupBox_ejecteur">
-     <property name="geometry">
-      <rect>
-       <x>309</x>
-       <y>99</y>
-       <width>151</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <property name="title">
-      <string>Test Ejecteur</string>
-     </property>
-     <widget class="QComboBox" name="comboBox_ejecteur">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>31</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>1</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>2</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>3</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>4</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QPushButton" name="pushButton_ejecteur">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>20</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Ejecteur</string>
-      </property>
-     </widget>
-    </widget>
     <widget class="QLabel" name="label_idEsclave">
      <property name="geometry">
       <rect>
@@ -206,24 +150,23 @@
    <widget class="QLabel" name="label_portLecteur">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>25</y>
-      <width>121</width>
-      <height>31</height>
+      <x>350</x>
+      <y>20</y>
+      <width>391</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Port de communication
-pour le lecteur de code</string>
+     <string>Port de communication pour le lecteur de code</string>
     </property>
    </widget>
    <widget class="QComboBox" name="comboBox_portLecteur">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>30</y>
-      <width>101</width>
-      <height>25</height>
+      <x>350</x>
+      <y>50</y>
+      <width>391</width>
+      <height>21</height>
      </rect>
     </property>
    </widget>
@@ -233,9 +176,9 @@ pour le lecteur de code</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>70</y>
-      <width>231</width>
+      <x>350</x>
+      <y>80</y>
+      <width>391</width>
       <height>61</height>
      </rect>
     </property>
@@ -506,6 +449,62 @@ pour le lecteur de code</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_ejecteur">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>150</y>
+      <width>151</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Test Ejecteur</string>
+    </property>
+    <widget class="QComboBox" name="comboBox_ejecteur">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>31</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>1</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="pushButton_ejecteur">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ejecteur</string>
      </property>
     </widget>
    </widget>
