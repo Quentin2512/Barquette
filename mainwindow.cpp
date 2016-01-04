@@ -38,5 +38,8 @@ void MainWindow::connecterPO()
 {
     if(laPO==NULL)
         laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
+    else
+        QMessageBox::critical(this,"Erreur connexion","Déja connecté");
+
 }
 

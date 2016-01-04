@@ -5,7 +5,7 @@ quint16 ModBusTCP::transactionId=0;
 ModBusTCP::ModBusTCP(QHostAddress _adresseIp, quint16 _port, quint8 _esclaveId, QObject *parent) : QObject(parent),
   adresseIp(_adresseIp),port(_port),esclaveId(_esclaveId)
 {
-    pSocket = new QTcpSocket();
+    pSocket = new QTcpSocket(this);
     connect(pSocket,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState)));
     connect(pSocket,SIGNAL(readyRead()),this,SLOT(on_readyRead()));
 }
