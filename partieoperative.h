@@ -23,9 +23,8 @@ public:
     PartieOperative(QHostAddress _adresseIp, quint16 _port,quint8 _esclaveId, QObject *parent=0);
     ~PartieOperative();
     void ejecterBarquette(int numEjecteur);
-    void demarrerTapis();
-    void arreterTapis();
-    void lancerProduction();
+    void lancerProduction(){leTapis->commander(true);timerPO->start(250);}
+    void arreterProduction(){leTapis->commander(false);timerPO->stop();}
 
 signals:
     void signalChangementEtatCapteurs(quint8);

@@ -22,12 +22,6 @@ void PartieOperative::ejecterBarquette(int numCapteur)
     modbusTCP->WriteSingleCoils(true,numCapteur);
 }
 
-void PartieOperative::lancerProduction()
-{
-    leTapis->commander(true);
-    timerPO->start(250);
-}
-
 /*void PartieOperative::verifCapteurs()
 {
     qint8 tempOctet=octet;
