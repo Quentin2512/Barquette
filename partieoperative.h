@@ -6,11 +6,11 @@
 #include "modbustcp.h"
 #include "tapis.h"
 #include "ejecteur.h"
+#include "capteurs.h"
 
 #define NB_CAPTEURS 4
 
 enum{
-    CAPTEUR,
     EJECTEUR1,
     EJECTEUR2,
     EJECTEUR3,
@@ -33,7 +33,7 @@ signals:
     void stateChanged(QAbstractSocket::SocketState);
 
 private slots:
-    void on_finTimer();
+    void on_finTimerPO();
 
     void on_socketChanged(QAbstractSocket::SocketState socketEtat);
 private:
@@ -45,6 +45,7 @@ private:
     qint8 octet;
     bool capteurs[NB_CAPTEURS];
     Ejecteur *lesEjecteurs[NB_CAPTEURS];
+    Capteurs *lesCapteurs;
 };
 
 #endif // PARTIEOPERATIVE_H

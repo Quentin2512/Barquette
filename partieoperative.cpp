@@ -13,6 +13,7 @@ PartieOperative::PartieOperative(QHostAddress _adresseIp, quint16 _port, quint8 
     capteurActuel=-1;
     octet=0;
     leTapis=new Tapis((quint16)TAPIS, *modBusTCP);
+    lesCapteurs=new Capteurs(0, *modBusTCP);
 }
 
 PartieOperative::~PartieOperative()
@@ -61,7 +62,7 @@ void PartieOperative::ejecterBarquette(int numCapteur)
     }
 }*/
 
-void PartieOperative::on_finTimer()
+void PartieOperative::on_finTimerPO()
 {
 
 }

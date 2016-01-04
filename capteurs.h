@@ -2,12 +2,13 @@
 #define CAPTEURS_H
 
 #include <QObject>
+#include "modbustcp.h"
 
 class Capteurs : public QObject
 {
     Q_OBJECT
 public:
-    Capteurs(quint16 _adresseCapteurs, QObject *parent = 0);
+    Capteurs(quint16 _adresseCapteurs, ModBusTCP &_modBusTCP, QObject *parent = 0);
     void LireEtatCapteurs();
 
 signals:
@@ -15,6 +16,7 @@ signals:
 
 private:
     quint16 adresseCapteurs;
+    ModBusTCP &modBusTCP;
 };
 
 #endif // CAPTEURS_H
