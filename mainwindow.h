@@ -19,7 +19,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
 signals:
     void signalChangementEtatCapteurs(quint8);
     void stateChanged(QAbstractSocket::SocketState);
@@ -30,6 +29,8 @@ private slots:
     void lancerProduction();
 
     void on_socketChanged(QAbstractSocket::SocketState state);
+
+    void on_pushButton_ejecteur_clicked();
 
 private:
     Ui::MainWindow *ui;

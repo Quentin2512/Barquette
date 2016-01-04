@@ -178,22 +178,6 @@
        <string>Ejecteur</string>
       </property>
      </widget>
-<<<<<<< HEAD
-     <widget class="QPushButton" name="pushButton_relacher">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>50</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Relacher</string>
-      </property>
-     </widget>
-=======
->>>>>>> origin/master
     </widget>
     <widget class="QLabel" name="label_idEsclave">
      <property name="geometry">
