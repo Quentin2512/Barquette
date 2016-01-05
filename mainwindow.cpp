@@ -54,9 +54,23 @@ void MainWindow::on_socketChanged(QAbstractSocket::SocketState state)
     }
 }
 
-void MainWindow::on_etatCapteurChanged(qint8 tram)
+void MainWindow::on_etatCapteurChanged(quint8 trame)
 {
+   if((trame&0x01)==0x01)
+       ui->checkBox_capteur1->setChecked(true);
+   else ui->checkBox_capteur1->setChecked(false);
 
+   if((trame&0x02)==0x02)
+       ui->checkBox_capteur2->setChecked(true);
+   else ui->checkBox_capteur2->setChecked(false);
+
+   if((trame&0x04)==0x04)
+       ui->checkBox_capteur3->setChecked(true);
+   else ui->checkBox_capteur3->setChecked(false);
+
+   if((trame&0x08)==0x08)
+       ui->checkBox_capteur4->setChecked(true);
+   else ui->checkBox_capteur4->setChecked(false);
 }
 
 void MainWindow::connecterPO()

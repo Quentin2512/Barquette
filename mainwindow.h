@@ -31,7 +31,7 @@ private slots:
 
     void on_socketChanged(QAbstractSocket::SocketState state);
 
-    void on_etatCapteurChanged(qint8 tram);
+    void on_etatCapteurChanged(quint8 trame);
 
 private:
     Ui::MainWindow *ui;
