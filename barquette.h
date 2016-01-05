@@ -15,7 +15,7 @@ public:
     QString code;
 
 public slots:
-    void on_changementEtatCapteurs(const qint8 capteur);
+    void on_changementEtatCapteurs(const quint8 capteur);
 
 signals:
     void signalBarquetteEjectee();

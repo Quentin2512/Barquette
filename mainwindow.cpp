@@ -60,9 +60,16 @@ void MainWindow::on_socketChanged(QAbstractSocket::SocketState state)
 
 void MainWindow::on_etatCapteurChanged(quint8 trame)
 {
-   if((trame&0x01)==0x01)
-       ui->checkBox_capteur1->setChecked(true);
-   else ui->checkBox_capteur1->setChecked(false);
+   if((trame&0x01)==0x01){
+       if(ui->checkBox_capteur1->isChecked()){
+           if(!fileBarquettes.isEmpty()){
+               listeBarquettes.append(fileBarquettes.dequeue());
+               listeBarquettes.last()->start();
+           }
+       }else{
+           ui->checkBox_capteur1->setChecked(true);
+       }
+   }else ui->checkBox_capteur1->setChecked(false);
 
    if((trame&0x02)==0x02)
        ui->checkBox_capteur2->setChecked(true);
@@ -101,9 +108,9 @@ void MainWindow::on_lineEdit_codeProduit_textChanged(const QString &arg1)
 {
     if(arg1.length()==13){
         ui->lineEdit_codeProduit->setSelection(0,13);
-        Barquette *pBarquette=new Barquette(0x01,arg1);
+        Barquette *pBarquette=new Barquette(0x08,arg1);
         connect(pBarquette,SIGNAL(signalEjecteurTrouve(quint8)),laPO,SLOT(ejecterBarquette(quint8)));
-        connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),pBarquette,SLOT(on_changementEtatCapteurs(qint8)));
+        connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),pBarquette,SLOT(on_changementEtatCapteurs(quint8)));
         connect(pBarquette,SIGNAL(signalBarquetteEjectee()),this,SLOT(on_barquetteEjectee()));
         fileBarquettes.enqueue(pBarquette);
     }

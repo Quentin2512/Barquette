@@ -24,7 +24,7 @@ void Barquette::run()
     emit signalBarquetteEjectee();
 }
 
-void Barquette::on_changementEtatCapteurs(const qint8 capteur)
+void Barquette::on_changementEtatCapteurs(const quint8 capteur)
 {
     this->capteurs=capteur;
     synchro.release();
