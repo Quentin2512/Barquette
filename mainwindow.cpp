@@ -26,7 +26,8 @@ void MainWindow::lancerProduction()
     if( ui->pushButton_lancerProd->text() == "Lancer la production" ){
         ui->pushButton_lancerProd->setText("Arrêter la production");
         laPO->lancerProduction();
-        connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),this,SLOT(on_etatCapteurChanged(qint8)));
+        if( !connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),this,SLOT(on_etatCapteurChanged(qint8))) )
+            qDebug() << "Erreur connexion slot on_etatCapteurChanged";
     }else{
         ui->pushButton_lancerProd->setText("Lancer la production");
         laPO->arreterProduction();
@@ -64,7 +65,8 @@ void MainWindow::connecterPO()
     {
         if(laPO==NULL){
             laPO = new PartieOperative(QHostAddress(ui->lineEdit_ipEsclave->text()),ui->spinBox_portTCP->value(),ui->spinBox_idEsclave->value());
-            connect(laPO,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState)));
+            if( !connect(laPO,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState))) )
+                qDebug() << "Erreur connexion slot on_socketChanged";
         }
     }else{
         if(ui->pushButton_lancerProd->text()=="Arrêter la production"){

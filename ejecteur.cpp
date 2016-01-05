@@ -3,7 +3,8 @@
 Ejecteur::Ejecteur(int _numEjecteur, ModBusTCP &_modBusTCP, QObject *parent) :QObject(parent),numEjecteur(_numEjecteur),modBusTCP(_modBusTCP)
 {
     timerEjecteur=new QTimer();
-    connect(timerEjecteur,SIGNAL(timeout()),this,SLOT(on_finTimerEjecteur()));
+    if( !connect(timerEjecteur,SIGNAL(timeout()),this,SLOT(on_finTimerEjecteur())) )
+        qDebug() << "Erreur connexion slot on_finTimerEjecteur";
 }
 
 Ejecteur::~Ejecteur()

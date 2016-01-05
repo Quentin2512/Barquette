@@ -7,8 +7,10 @@ ModBusTCP::ModBusTCP(QHostAddress _adresseIp, quint16 _port, quint8 _esclaveId, 
 {
     pSocket = new QTcpSocket(this);
     pSocket->connectToHost(adresseIp,port);
-    connect(pSocket,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState)));
-    connect(pSocket,SIGNAL(readyRead()),this,SLOT(on_readyRead()));
+    if( !connect(pSocket,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState))) )
+        qDebug() << "Erreur connexion slot on_socketChanged";
+    if( !connect(pSocket,SIGNAL(readyRead()),this,SLOT(on_readyRead())) )
+        qDebug() << "Erreur connexion slot on_readyRead";
 }
 
 ModBusTCP::~ModBusTCP()

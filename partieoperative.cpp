@@ -3,13 +3,15 @@
 PartieOperative::PartieOperative(QHostAddress _adresseIp, quint16 _port, quint8 _esclaveId, QObject *parent):QObject(parent)
 {
     modBusTCP=new ModBusTCP(_adresseIp,_port,_esclaveId);
-    connect(modBusTCP,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState)));
+    if( !connect(modBusTCP,SIGNAL(stateChanged(QAbstractSocket::SocketState)),this,SLOT(on_socketChanged(QAbstractSocket::SocketState))) )
+        qDebug() << "Erreur connexion slot on_socketChanged";
 
     for(int x=0;x<NB_CAPTEURS;x++)
         lesEjecteurs[x]=new Ejecteur(x,*modBusTCP);
 
     timerPO=new QTimer;
-    connect(timerPO,SIGNAL(timeout()),this,SLOT(on_finTimer()));
+    if( !connect(timerPO,SIGNAL(timeout()),this,SLOT(on_finTimerPO())) )
+        qDebug() << "Erreur connexion slot on_finTimerPO";
     leTapis=new Tapis((quint16)TAPIS, *modBusTCP);
     lesCapteurs=new Capteurs(0, *modBusTCP);
 }

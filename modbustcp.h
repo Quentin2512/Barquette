@@ -6,6 +6,7 @@
 #include <QTcpSocket>
 #include <QDataStream>
 #include <QSemaphore>
+#include <QDebug>
 
 #define OFF 0x00
 #define ON 0xFF
