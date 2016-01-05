@@ -5,6 +5,7 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QMessageBox>
+#include <QQueue>
 #include "barquette.h"
 #include "partieoperative.h"
 
@@ -33,10 +34,15 @@ private slots:
 
     void on_etatCapteurChanged(quint8 trame);
 
+    void on_lineEdit_codeProduit_textChanged(const QString &arg1);
+
+    void on_barquetteEjectee();
+
 private:
     Ui::MainWindow *ui;
     PartieOperative *laPO;
-    QList<Barquette> listeBarquettes;
+    QList<Barquette*> listeBarquettes;
+    QQueue<Barquette*> fileBarquettes;
 };
 
 #endif // MAINWINDOW_H

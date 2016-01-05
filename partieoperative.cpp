@@ -27,9 +27,24 @@ PartieOperative::~PartieOperative()
     delete lesCapteurs;
 }
 
-void PartieOperative::ejecterBarquette(int numCapteur)
+void PartieOperative::ejecterBarquette(quint8 numCapteur)
 {
-    lesEjecteurs[numCapteur]->piloter();
+    switch (numCapteur) {
+    case 0x01:
+        lesEjecteurs[0]->piloter();
+        break;
+    case 0x02:
+        lesEjecteurs[1]->piloter();
+        break;
+    case 0x04:
+        lesEjecteurs[2]->piloter();
+        break;
+    case 0x08:
+        lesEjecteurs[3]->piloter();
+        break;
+    default:
+        break;
+    }
 }
 
 void PartieOperative::on_finTimerPO()

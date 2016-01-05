@@ -15,6 +15,10 @@ MainWindow::~MainWindow()
 {
     if(laPO != NULL)
         delete laPO;
+    qDeleteAll(listeBarquettes);
+    listeBarquettes.clear();
+    qDeleteAll(fileBarquettes);
+    fileBarquettes.clear();
     delete ui;
 }
 
@@ -91,4 +95,21 @@ void MainWindow::connecterPO()
         delete laPO;
         laPO=NULL;
     }
+}
+
+void MainWindow::on_lineEdit_codeProduit_textChanged(const QString &arg1)
+{
+    if(arg1.length()==13){
+        ui->lineEdit_codeProduit->setSelection(0,13);
+        Barquette *pBarquette=new Barquette(0x01,arg1);
+        connect(pBarquette,SIGNAL(signalEjecteurTrouve(quint8)),laPO,SLOT(ejecterBarquette(quint8)));
+        connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),pBarquette,SLOT(on_changementEtatCapteurs(qint8)));
+        connect(pBarquette,SIGNAL(signalBarquetteEjectee()),this,SLOT(on_barquetteEjectee()));
+        fileBarquettes.enqueue(pBarquette);
+    }
+}
+
+void MainWindow::on_barquetteEjectee()
+{
+    listeBarquettes.removeOne((Barquette*)sender());
 }

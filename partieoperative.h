@@ -24,7 +24,6 @@ class PartieOperative: public QObject
 public:
     PartieOperative(QHostAddress _adresseIp, quint16 _port,quint8 _esclaveId, QObject *parent=0);
     ~PartieOperative();
-    void ejecterBarquette(int numEjecteur);
     void lancerProduction(){leTapis->commander(true);timerPO->start(250);}
     void arreterProduction(){leTapis->commander(false);timerPO->stop();}
 
@@ -38,6 +37,8 @@ private slots:
     void on_socketChanged(QAbstractSocket::SocketState socketEtat);
 
     void on_signalChangementEtatCapteursReceived(quint8 trame);
+
+    void ejecterBarquette(quint8 numEjecteur);
 
 private:
     ModBusTCP *modBusTCP;

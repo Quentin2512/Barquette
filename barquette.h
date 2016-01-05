@@ -9,7 +9,7 @@ class Barquette : public QThread
 {
     Q_OBJECT
 public:
-    explicit Barquette(const qint8 _destination, const QString _code, QObject *parent = 0);
+    explicit Barquette(const quint8 _destination, const QString _code, QObject *parent = 0);
     ~Barquette();
     void run();
     QString code;
@@ -19,11 +19,11 @@ public slots:
 
 signals:
     void signalBarquetteEjectee();
-    void signalEjecteurTrouve();
+    void signalEjecteurTrouve(quint8);
 
 private:
-    qint8 capteurs;
-    int destination;
+    quint8 capteurs;
+    quint8 destination;
     QSemaphore synchro;
 };
 
