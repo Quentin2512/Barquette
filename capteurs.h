@@ -11,12 +11,6 @@ public:
     Capteurs(quint16 _adresseCapteurs, ModBusTCP &_modBusTCP, QObject *parent = 0);
     void LireEtatCapteurs();
 
-signals:
-    void signalEtatCapteurs(quint8);
-
-private slots:
-    void on_signalReadInputRegisterReceived(quint8 trame);
-
 private:
     quint16 adresseCapteurs;
     ModBusTCP &modBusTCP;

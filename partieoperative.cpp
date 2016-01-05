@@ -13,7 +13,9 @@ PartieOperative::PartieOperative(QHostAddress _adresseIp, quint16 _port, quint8 
     if( !connect(timerPO,SIGNAL(timeout()),this,SLOT(on_finTimerPO())) )
         qDebug() << "Erreur connexion slot on_finTimerPO";
     leTapis=new Tapis((quint16)TAPIS, *modBusTCP);
+
     lesCapteurs=new Capteurs(0, *modBusTCP);
+    connect(modBusTCP,SIGNAL(signalReponseReadInputRegister(quint8)),this,SLOT(on_signalChangementEtatCapteursReceived(quint8)));
 }
 
 PartieOperative::~PartieOperative()
@@ -41,7 +43,7 @@ void PartieOperative::on_socketChanged(QAbstractSocket::SocketState socketEtat)
     emit stateChanged(socketEtat);
 }
 
-void PartieOperative::on_signalChangementEtatCapteursReceived(quint8)
+void PartieOperative::on_signalChangementEtatCapteursReceived(quint8 trame)
 {
-
+    emit signalChangementEtatCapteurs(trame);
 }

@@ -10,8 +10,3 @@ void Capteurs::LireEtatCapteurs()
     modBusTCP.ReadInputRegister(0);
 }
 
-void Capteurs::on_signalReadInputRegisterReceived(quint8 trame)
-{
-    emit signalEtatCapteurs(trame);
-}
-
