@@ -23,11 +23,14 @@ void MainWindow::lancerProduction()
     if( ui->pushButton_lancerProd->text() == "Lancer la production" ){
         ui->pushButton_lancerProd->setText("Arrêter la production");
         laPO->lancerProduction();
+        ui->groupBox_connexion->setEnabled(false);
+        ui->lineEdit_codeProduit->setFocus();
         if( !connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),this,SLOT(on_etatCapteurChanged(quint8))) )
             qDebug() << "Erreur connexion slot on_etatCapteurChanged";
     }else{
         ui->pushButton_lancerProd->setText("Lancer la production");
         laPO->arreterProduction();
+        ui->groupBox_connexion->setEnabled(true);
     }
 }
 

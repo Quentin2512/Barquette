@@ -13,7 +13,6 @@ PartieOperative::PartieOperative(QHostAddress _adresseIp, quint16 _port, quint8 
     if( !connect(timerPO,SIGNAL(timeout()),this,SLOT(on_finTimerPO())) )
         qDebug() << "Erreur connexion slot on_finTimerPO";
     leTapis=new Tapis((quint16)TAPIS, *modBusTCP);
-
     lesCapteurs=new Capteurs(0, *modBusTCP);
     connect(modBusTCP,SIGNAL(signalReponseReadInputRegister(quint8)),this,SLOT(on_signalChangementEtatCapteursReceived(quint8)));
 }
