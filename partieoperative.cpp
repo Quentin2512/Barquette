@@ -33,7 +33,7 @@ void PartieOperative::ejecterBarquette(int numCapteur)
 
 void PartieOperative::on_finTimerPO()
 {
-
+    lesCapteurs->LireEtatCapteurs();
 }
 
 void PartieOperative::on_socketChanged(QAbstractSocket::SocketState socketEtat)

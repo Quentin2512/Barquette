@@ -5,3 +5,8 @@ Capteurs::Capteurs(quint16 _adresseCapteurs, ModBusTCP &_modBusTCP, QObject *par
 
 }
 
+void Capteurs::LireEtatCapteurs()
+{
+    modBusTCP.ReadInputRegister(0);
+}
+
