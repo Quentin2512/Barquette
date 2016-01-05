@@ -24,13 +24,8 @@ void ModBusTCP::WriteSingleCoils(qint16 _adresse, quint8 _valeur)
     debutTrame();
     out<<(quint8)FC_WRITE_COILS;
     out<<_adresse;
-    if((bool)_valeur)
-    {
-        out<<(quint8)0xFF;
-        out<<(quint8)0;
-    }else{
-        out<<(quint16)0;
-    }
+    out<<_valeur;
+    out<<(quint8)0;
 }
 
 void ModBusTCP::ReadInputRegister(quint16 adresse)
