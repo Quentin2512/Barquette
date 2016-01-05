@@ -40,3 +40,8 @@ void PartieOperative::on_socketChanged(QAbstractSocket::SocketState socketEtat)
 {
     emit stateChanged(socketEtat);
 }
+
+void PartieOperative::on_signalChangementEtatCapteursReceived(quint8)
+{
+
+}

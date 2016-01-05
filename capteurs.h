@@ -12,7 +12,10 @@ public:
     void LireEtatCapteurs();
 
 signals:
-    void signalEtatCapteurs();
+    void signalEtatCapteurs(quint8);
+
+private slots:
+    void on_signalReadInputRegisterReceived(quint8 trame);
 
 private:
     quint16 adresseCapteurs;

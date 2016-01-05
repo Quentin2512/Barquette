@@ -37,6 +37,8 @@ private slots:
 
     void on_socketChanged(QAbstractSocket::SocketState socketEtat);
 
+    void on_signalChangementEtatCapteursReceived(quint8);
+
 private:
     ModBusTCP *modBusTCP;
     QTimer *timerPO;
