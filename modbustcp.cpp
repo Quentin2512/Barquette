@@ -75,7 +75,7 @@ void ModBusTCP::on_readyRead()
 
     switch (code) {
     case FC_READ_INPUT_REGISTERS:
-        emit signalReponseReadInputRegister(QString::number(temp));
+        emit signalReponseReadInputRegister(temp);
         break;
     case 0x81:
         if(temp==0x01)

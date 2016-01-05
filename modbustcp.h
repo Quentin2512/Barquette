@@ -41,7 +41,7 @@ signals:
 
     void signalReponseWriteSingleCoils();
 
-    void signalReponseReadInputRegister(QString);
+    void signalReponseReadInputRegister(quint8);
 
 private slots:
     void on_socketChanged(QAbstractSocket::SocketState socketEtat);
