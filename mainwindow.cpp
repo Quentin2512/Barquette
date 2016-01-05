@@ -7,9 +7,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    for(int x=0;x<QSerialPortInfo::availablePorts().length();x++)
-        ui->comboBox_portLecteur->addItem(QSerialPortInfo::availablePorts()[x].description()+" - "+QSerialPortInfo::availablePorts()[x].portName());
-
     laPO = NULL;
 }
 
@@ -26,7 +23,7 @@ void MainWindow::lancerProduction()
     if( ui->pushButton_lancerProd->text() == "Lancer la production" ){
         ui->pushButton_lancerProd->setText("Arrêter la production");
         laPO->lancerProduction();
-        if( !connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),this,SLOT(on_etatCapteurChanged(qint8))) )
+        if( !connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),this,SLOT(on_etatCapteurChanged(quint8))) )
             qDebug() << "Erreur connexion slot on_etatCapteurChanged";
     }else{
         ui->pushButton_lancerProd->setText("Lancer la production");
