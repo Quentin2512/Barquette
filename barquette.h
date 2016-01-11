@@ -25,6 +25,7 @@ private:
     quint8 capteurs;
     quint8 destination;
     QSemaphore synchro;
+    bool verif;
 };
 
 #endif // BARQUETTE_H

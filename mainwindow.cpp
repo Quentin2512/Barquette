@@ -59,6 +59,7 @@ void MainWindow::on_socketChanged(QAbstractSocket::SocketState state)
         break;
     case QAbstractSocket::UnconnectedState:
         ui->listWidget_etatConnexion->addItem("Déconnecté");
+        ui->pushButton_connexion->setText("Connexion");
         ui->pushButton_lancerProd->setEnabled(false);
         break;
     default:
@@ -116,7 +117,6 @@ void MainWindow::on_lineEdit_codeProduit_textChanged(const QString &arg1)
 {
     if(arg1.length()==13){
         ui->lineEdit_codeProduit->setSelection(0,13);
-
         QSqlQuery query;
         query.prepare("select idBarquette from Ejection where CodeBarre like :codebarre");
         query.bindValue(":codebarre", ui->lineEdit_codeProduit->text());
@@ -141,7 +141,6 @@ void MainWindow::on_lineEdit_codeProduit_textChanged(const QString &arg1)
                 }
             }
         } else qDebug() << "Echec de la requete";
-
         Barquette *pBarquette=new Barquette(retourEjecteurBD,arg1);
         if( !connect(pBarquette,SIGNAL(signalEjecteurTrouve(quint8)),laPO,SLOT(ejecterBarquette(quint8))) )
             qDebug() << "Erreur connect ejecterBarquette";
