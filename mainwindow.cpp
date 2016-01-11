@@ -25,6 +25,7 @@ MainWindow::~MainWindow()
 void MainWindow::lancerProduction()
 {
     if( ui->pushButton_lancerProd->text() == "Lancer la production" ){
+        ui->progressBar->setMaximum(0);
         ui->pushButton_lancerProd->setText("Arrêter la production");
         laPO->lancerProduction();
         ui->groupBox_connexion->setEnabled(false);
@@ -33,6 +34,7 @@ void MainWindow::lancerProduction()
             qDebug() << "Erreur connexion slot on_etatCapteurChanged";
     }else{
         ui->pushButton_lancerProd->setText("Lancer la production");
+        ui->progressBar->setMaximum(1);
         laPO->arreterProduction();
         ui->groupBox_connexion->setEnabled(true);
     }
@@ -108,7 +110,7 @@ void MainWindow::on_lineEdit_codeProduit_textChanged(const QString &arg1)
 {
     if(arg1.length()==13){
         ui->lineEdit_codeProduit->setSelection(0,13);
-        quint8 retourEjecteurBD=0x02;
+        quint8 retourEjecteurBD;
         Barquette *pBarquette=new Barquette(retourEjecteurBD,arg1);
         connect(pBarquette,SIGNAL(signalEjecteurTrouve(quint8)),laPO,SLOT(ejecterBarquette(quint8)));
         connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),pBarquette,SLOT(on_changementEtatCapteurs(quint8)));
