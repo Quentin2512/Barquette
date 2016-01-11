@@ -7,6 +7,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("Barquette.sqlite");
+    if( db.open() )
+        qDebug() << "Ouverture de la base de donnees avec succes";
+    else qDebug() << "Echec d'ouverture de la base de donnees";
+
     laPO = NULL;
 }
 
@@ -110,11 +116,39 @@ void MainWindow::on_lineEdit_codeProduit_textChanged(const QString &arg1)
 {
     if(arg1.length()==13){
         ui->lineEdit_codeProduit->setSelection(0,13);
+
+        QSqlQuery query;
+        query.prepare("select idBarquette from Ejection where CodeBarre like :codebarre");
+        query.bindValue(":codebarre", ui->lineEdit_codeProduit->text());
         quint8 retourEjecteurBD;
+        if(query.exec()){
+            while(query.next()){
+                switch (query.value(0).toInt()) {
+                case 1:
+                    retourEjecteurBD = 0x01;
+                    break;
+                case 2:
+                    retourEjecteurBD = 0x02;
+                    break;
+                case 3:
+                    retourEjecteurBD = 0x04;
+                    break;
+                case 4:
+                    retourEjecteurBD = 0x08;
+                    break;
+                default:
+                    break;
+                }
+            }
+        } else qDebug() << "Echec de la requete";
+
         Barquette *pBarquette=new Barquette(retourEjecteurBD,arg1);
-        connect(pBarquette,SIGNAL(signalEjecteurTrouve(quint8)),laPO,SLOT(ejecterBarquette(quint8)));
-        connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),pBarquette,SLOT(on_changementEtatCapteurs(quint8)));
-        connect(pBarquette,SIGNAL(signalBarquetteEjectee(quint8,QString)),this,SLOT(on_barquetteEjectee(quint8,QString)));
+        if( !connect(pBarquette,SIGNAL(signalEjecteurTrouve(quint8)),laPO,SLOT(ejecterBarquette(quint8))) )
+            qDebug() << "Erreur connect ejecterBarquette";
+        if( !connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),pBarquette,SLOT(on_changementEtatCapteurs(quint8))) )
+            qDebug() << "Erreur connect on_changementEtatCapteurs";
+        if( !connect(pBarquette,SIGNAL(signalBarquetteEjectee(quint8,QString)),this,SLOT(on_barquetteEjectee(quint8,QString))) )
+            qDebug() << "Erreur connect on_barquetteEjectee";
         ui->listWidget_barquettes->addItem(arg1);
         fileBarquettes.enqueue(pBarquette);
     }

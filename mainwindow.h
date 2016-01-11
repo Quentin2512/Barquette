@@ -4,8 +4,9 @@
 #include <QMainWindow>
 #include <QSerialPort>
 #include <QSerialPortInfo>
-#include <QMessageBox>
 #include <QQueue>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 #include "barquette.h"
 #include "partieoperative.h"
 
@@ -43,6 +44,7 @@ private:
     PartieOperative *laPO;
     QList<Barquette*> listeBarquettes;
     QQueue<Barquette*> fileBarquettes;
+    QSqlDatabase db;
 };
 
 #endif // MAINWINDOW_H
