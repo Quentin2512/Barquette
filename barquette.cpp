@@ -27,8 +27,8 @@ void Barquette::run()
 
 void Barquette::on_changementEtatCapteurs(const quint8 capteur)
 {
+    this->capteurs=capteur;
     if((capteurs&destination)==destination)
         verif=true;
-    this->capteurs=capteur;
     synchro.release();
 }

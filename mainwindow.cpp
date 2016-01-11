@@ -19,8 +19,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    if(laPO != NULL)
+    if(laPO != NULL){
         delete laPO;
+        if(ui->pushButton_lancerProd->isEnabled() && ui->pushButton_lancerProd->text()=="Arrêter la production"){
+            ui->pushButton_lancerProd->click();
+        }
+    }
     qDeleteAll(listeBarquettes);
     listeBarquettes.clear();
     qDeleteAll(fileBarquettes);
@@ -43,6 +47,15 @@ void MainWindow::lancerProduction()
         ui->progressBar->setMaximum(1);
         ui->lineEdit_codeProduit->clear();
         ui->listWidget_barquettes->clear();
+        ui->lcdNumber_reste->display(0);
+        ui->lcdNumber_sortie1->display(0);
+        ui->lcdNumber_sortie2->display(0);
+        ui->lcdNumber_sortie3->display(0);
+        ui->lcdNumber_sortie4->display(0);
+        qDeleteAll(fileBarquettes);
+        fileBarquettes.clear();
+        qDeleteAll(listeBarquettes);
+        listeBarquettes.clear();
         laPO->arreterProduction();
         ui->groupBox_connexion->setEnabled(true);
     }
@@ -120,8 +133,8 @@ void MainWindow::on_lineEdit_codeProduit_textChanged(const QString &arg1)
     if(arg1.length()==13){
         ui->lineEdit_codeProduit->setSelection(0,13);
         QSqlQuery query;
-        query.prepare("select idBarquette from Ejection where CodeBarre like :codebarre");
-        query.bindValue(":codebarre", ui->lineEdit_codeProduit->text());
+        query.prepare("select Ejecteur from Ejection where CodeBarre like :codebarre");
+        query.bindValue(":codebarre", arg1);
         quint8 retourEjecteurBD;
         if(query.exec()){
             while(query.next()){
@@ -159,11 +172,12 @@ void MainWindow::on_barquetteEjectee(quint8 ejecteur, QString nom)
 {
     int x=0;
     bool verif=false;
-    while(x<ui->listWidget_barquettes->count() || !verif){
+    while(x<ui->listWidget_barquettes->count() && !verif){
         if(ui->listWidget_barquettes->item(x)->text()==nom){
             delete ui->listWidget_barquettes->item(x);
             verif=true;
         }
+        x++;
     }
 
     switch (ejecteur) {
