@@ -36,7 +36,7 @@ private slots:
 
     void on_lineEdit_codeProduit_textChanged(const QString &arg1);
 
-    void on_barquetteEjectee();
+    void on_barquetteEjectee(quint8 ejecteur, QString nom);
 
 private:
     Ui::MainWindow *ui;

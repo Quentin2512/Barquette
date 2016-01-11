@@ -21,7 +21,7 @@ void Barquette::run()
         }
     }while(!verif);
     emit signalEjecteurTrouve(destination);
-    emit signalBarquetteEjectee();
+    emit signalBarquetteEjectee(destination,code);
 }
 
 void Barquette::on_changementEtatCapteurs(const quint8 capteur)

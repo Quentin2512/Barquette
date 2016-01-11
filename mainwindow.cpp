@@ -108,15 +108,42 @@ void MainWindow::on_lineEdit_codeProduit_textChanged(const QString &arg1)
 {
     if(arg1.length()==13){
         ui->lineEdit_codeProduit->setSelection(0,13);
-        Barquette *pBarquette=new Barquette(0x08,arg1);
+        quint8 retourEjecteurBD=0x02;
+        Barquette *pBarquette=new Barquette(retourEjecteurBD,arg1);
         connect(pBarquette,SIGNAL(signalEjecteurTrouve(quint8)),laPO,SLOT(ejecterBarquette(quint8)));
         connect(laPO,SIGNAL(signalChangementEtatCapteurs(quint8)),pBarquette,SLOT(on_changementEtatCapteurs(quint8)));
-        connect(pBarquette,SIGNAL(signalBarquetteEjectee()),this,SLOT(on_barquetteEjectee()));
+        connect(pBarquette,SIGNAL(signalBarquetteEjectee(quint8,QString)),this,SLOT(on_barquetteEjectee(quint8,QString)));
+        ui->listWidget_barquettes->addItem(arg1);
         fileBarquettes.enqueue(pBarquette);
     }
 }
 
-void MainWindow::on_barquetteEjectee()
+void MainWindow::on_barquetteEjectee(quint8 ejecteur, QString nom)
 {
+    int x=0;
+    bool verif=false;
+    while(x<ui->listWidget_barquettes->count() || !verif){
+        if(ui->listWidget_barquettes->item(x)->text()==nom){
+            delete ui->listWidget_barquettes->item(x);
+            verif=true;
+        }
+    }
+
+    switch (ejecteur) {
+    case 0x01:
+        ui->lcdNumber_sortie1->display(ui->lcdNumber_sortie1->value()+1);
+        break;
+    case 0x02:
+        ui->lcdNumber_sortie2->display(ui->lcdNumber_sortie2->value()+1);
+        break;
+    case 0x04:
+        ui->lcdNumber_sortie3->display(ui->lcdNumber_sortie3->value()+1);
+        break;
+    case 0x08:
+        ui->lcdNumber_sortie4->display(ui->lcdNumber_sortie4->value()+1);
+        break;
+    default:
+        break;
+    }
     listeBarquettes.removeOne((Barquette*)sender());
 }

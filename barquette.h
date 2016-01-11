@@ -18,7 +18,7 @@ public slots:
     void on_changementEtatCapteurs(const quint8 capteur);
 
 signals:
-    void signalBarquetteEjectee();
+    void signalBarquetteEjectee(quint8,QString);
     void signalEjecteurTrouve(quint8);
 
 private:
