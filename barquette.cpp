@@ -14,13 +14,13 @@ Barquette::~Barquette()
 
 void Barquette::run()
 {
-    bool verifDescendentDeOuf=false;
+    bool verifDescendent=false;
     do{
         synchro.acquire();
         if((capteurs&destination)!=destination && verif){
-            verifDescendentDeOuf=true;
+            verifDescendent=true;
         }
-    }while(!verifDescendentDeOuf);
+    }while(!verifDescendent);
     emit signalEjecteurTrouve(destination);
     emit signalBarquetteEjectee(destination,code);
 }

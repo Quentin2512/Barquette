@@ -41,6 +41,8 @@ void MainWindow::lancerProduction()
     }else{
         ui->pushButton_lancerProd->setText("Lancer la production");
         ui->progressBar->setMaximum(1);
+        ui->lineEdit_codeProduit->clear();
+        ui->listWidget_barquettes->clear();
         laPO->arreterProduction();
         ui->groupBox_connexion->setEnabled(true);
     }
